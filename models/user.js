@@ -37,7 +37,8 @@ module.exports = class User extends Sequelize.Model {
         });
     }
     static associate(db) { // 다른 모델과의 관계
-        
+        // 1: N 관계, User -> Comment, User가 1이고 Comment가 N일때 관계는 hasMany 메서드로 표현
+        db.User.hasMany(db.Comment, { foreignKey: 'commenter', sourceKey: 'id' });
     } 
 };
 
